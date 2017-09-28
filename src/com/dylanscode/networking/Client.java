@@ -64,9 +64,9 @@ public class Client extends JFrame implements ActionListener,Runnable {
 		setSize(new Dimension(300,400));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new GridBagLayout());
-		input = new JTextField(25);
+		input = new JTextField(24);
 	    input.addActionListener(this);
-	    area = new JTextArea(21,25);
+	    area = new JTextArea(21,24);
 	    area.setEditable(false);
 	    JScrollPane scrollPane = new JScrollPane(area);
 	    GridBagConstraints c = new GridBagConstraints();
