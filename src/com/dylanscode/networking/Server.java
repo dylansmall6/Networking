@@ -5,18 +5,21 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Vector;
 
 public class Server {
 	private ServerSocket server;
+	public static Vector<ClientHandler> handlers = new Vector<ClientHandler>();
 	public Server() {
 		try {
 			server = new ServerSocket(33433);
-			Socket socket = server.accept();
 			while(true) {
+				Socket socket = server.accept();
 				DataInputStream in = new DataInputStream(socket.getInputStream());
-				System.out.println("Socket says: " + in.readUTF());
 				DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-				out.writeUTF("HELLO SAYS SERVER");
+				ClientHandler handler = new ClientHandler(socket,in,out);
+				handlers.add(handler);
+				handler.start();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
