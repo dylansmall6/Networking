@@ -21,8 +21,8 @@ public class Server {
 				handlers.add(handler);
 				handler.start();
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
+		}catch(IOException e) {
+			System.err.println("IO Exception");
 		}
 	}
 	public static void main(String[] args) {

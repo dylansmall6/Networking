@@ -14,6 +14,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -27,10 +28,11 @@ public class Client extends JFrame implements ActionListener,Runnable {
 	private DataInputStream in;
 	private JTextField input;
 	private JTextArea area;
+	private String uname;
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		try {
-			out.writeUTF(input.getText());
+			out.writeUTF(uname + ": " + input.getText());
 			out.flush();
 			input.setText("");
 		} catch (IOException e) {
@@ -58,6 +60,7 @@ public class Client extends JFrame implements ActionListener,Runnable {
 		}
 	}
 	public void init() {
+		uname = (String)JOptionPane.showInputDialog(this.getContentPane(), "Welcome to the chat room.\nUsername?","Chat Client", JOptionPane.PLAIN_MESSAGE,null,null,null);
 		setMinimumSize(new Dimension(300,400));
 		setMaximumSize(new Dimension(300,400));
 		setPreferredSize(new Dimension(300,400));
@@ -73,7 +76,7 @@ public class Client extends JFrame implements ActionListener,Runnable {
 	    add(scrollPane,c);
 	    c.gridy = 1;
 	    add(input,c);
-		setTitle("Messenger");
+		setTitle("Messenger: " + uname);
 		setVisible(true);
 		pack();
 		try {
