@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Vector;
-
+/**
+ * The Server class is going to serve the purpose of bringing in sockets and assigning them to a ClientHandler
+ * @author Dylan
+ */
 public class Server {
 	//The Server is an essential part. All Sockets connect to the ServerSocket, so 
 	//we need a ServerSocket to connec to

@@ -19,6 +19,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+/**
+ * The Client class is going to serve the purpose of making a JFrame for input, and creating a Socket to write to a Server
+ * @author Dylan
+ */
 public class Client extends JFrame implements ActionListener, Runnable {
 
 	private static final long serialVersionUID = 1L;
